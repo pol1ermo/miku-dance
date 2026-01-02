@@ -27,81 +27,55 @@
             align-items: center;
         }
 
-        .miku-gif {
+        .miku-video {
             max-width: 90vw;
-            max-height: 80vh;
-            image-rendering: auto;
+            max-height: 70vh;
+            border: none;
         }
 
-        .play-button {
+        .audio-container {
             position: fixed;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            padding: 15px 40px;
-            font-size: 18px;
-            background: linear-gradient(135deg, #39c5bb, #00d4aa);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
+        }
+
+        .title {
+            color: #39c5bb;
             font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 0 20px rgba(57, 197, 187, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .play-button:hover {
-            transform: translateX(-50%) scale(1.1);
-            box-shadow: 0 0 30px rgba(57, 197, 187, 0.8);
-        }
-
-        .play-button.playing {
-            background: linear-gradient(135deg, #ff6b9d, #c44569);
-            box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
-        }
-
-        .play-button.playing:hover {
-            box-shadow: 0 0 30px rgba(255, 107, 157, 0.8);
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #39c5bb;
         }
     </style>
 </head>
 <body>
+    <h1 class="title">Hatsune Miku Dance Party</h1>
+
     <div class="miku-container">
-        <img src="https://media1.tenor.com/m/IesZfGMxFJcAAAAd/hatsune-miku-dance.gif" alt="Hatsune Miku Dancing" class="miku-gif">
+        <iframe
+            class="miku-video"
+            width="800"
+            height="450"
+            src="https://www.youtube.com/embed/YfF7HqZm_vA?autoplay=1&loop=1&playlist=YfF7HqZm_vA&mute=1"
+            title="Hatsune Miku Dancing"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
     </div>
 
-    <button class="play-button" id="playBtn">Play Music</button>
-
-    <audio id="bgMusic" loop>
-        <source src="https://files.catbox.moe/7i4o5e.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        const playBtn = document.getElementById('playBtn');
-        const bgMusic = document.getElementById('bgMusic');
-        let isPlaying = false;
-
-        playBtn.addEventListener('click', function() {
-            if (isPlaying) {
-                bgMusic.pause();
-                playBtn.textContent = 'Play Music';
-                playBtn.classList.remove('playing');
-            } else {
-                bgMusic.play();
-                playBtn.textContent = 'Pause Music';
-                playBtn.classList.add('playing');
-            }
-            isPlaying = !isPlaying;
-        });
-
-        bgMusic.addEventListener('ended', function() {
-            playBtn.textContent = 'Play Music';
-            playBtn.classList.remove('playing');
-            isPlaying = false;
-        });
-    </script>
+    <div class="audio-container">
+        <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/track/1lCRw5FEZ1gPDNPzy1K4zW?utm_source=generator&theme=0"
+            width="352"
+            height="152"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+        </iframe>
+    </div>
 </body>
 </html>
