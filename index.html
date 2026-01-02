@@ -18,7 +18,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            gap: 20px;
         }
 
         .miku-container {
@@ -27,22 +27,29 @@
             align-items: center;
         }
 
-        .miku-gif {
+        .miku-container iframe {
             max-width: 90vw;
-            max-height: 70vh;
+            border: none;
+            border-radius: 12px;
         }
 
         .audio-container {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="miku-container">
-        <img src="miku.gif" alt="Hatsune Miku Dancing" class="miku-gif">
+        <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/rL5YKZ9ecpg?autoplay=1&loop=1&playlist=rL5YKZ9ecpg&mute=1&controls=0"
+            title="Hatsune Miku Dancing"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
     </div>
 
     <div class="audio-container">
