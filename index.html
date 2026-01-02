@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hatsune Miku Dance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .miku-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .miku-gif {
+            max-width: 90vw;
+            max-height: 80vh;
+            image-rendering: auto;
+        }
+
+        .play-button {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 40px;
+            font-size: 18px;
+            background: linear-gradient(135deg, #39c5bb, #00d4aa);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(57, 197, 187, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 30px rgba(57, 197, 187, 0.8);
+        }
+
+        .play-button.playing {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+        }
+
+        .play-button.playing:hover {
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="miku-container">
+        <img src="https://media1.tenor.com/m/IesZfGMxFJcAAAAd/hatsune-miku-dance.gif" alt="Hatsune Miku Dancing" class="miku-gif">
+    </div>
+
+    <button class="play-button" id="playBtn">Play Music</button>
+
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/7i4o5e.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const playBtn = document.getElementById('playBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                playBtn.textContent = 'Play Music';
+                playBtn.classList.remove('playing');
+            } else {
+                bgMusic.play();
+                playBtn.textContent = 'Pause Music';
+                playBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        bgMusic.addEventListener('ended', function() {
+            playBtn.textContent = 'Play Music';
+            playBtn.classList.remove('playing');
+            isPlaying = false;
+        });
+    </script>
+</body>
+</html>
